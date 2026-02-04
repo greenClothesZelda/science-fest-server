@@ -1,0 +1,26 @@
+### 이미지 업로드 테스트
+POST http://localhost:8000/api/upload/image
+Content-Type: multipart/form-data
+
+--boundary
+Content-Disposition: form-data; name="file"; filename="test.jpg"
+Content-Type: image/jpeg
+
+< ./test.jpg
+--boundary
+Content-Disposition: form-data; name="description"
+
+테스트 이미지 업로드
+--boundary--
+
+### 텍스트 업로드 테스트 (한글)
+POST http://localhost:8000/api/upload/text
+Content-Type: application/json
+
+{
+  "message": "저는 해킹에 당했어요",
+  "user": "시연자"
+}
+
+### 대시보드 확인
+GET http://localhost:8000/dashboard
